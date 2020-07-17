@@ -45,6 +45,26 @@ a:hover {
 }
 
 
+.btn-design{
+	text-decoration: none;
+    margin-top: 5%;
+	/* background-image: linear-gradient(90deg,rgb(236, 176, 208),rgba(230, 14, 122, 0.993)); */
+	background-color: salmon;
+    padding: 15px 40px;
+    border-radius: 5px;
+    color: white;
+	font-weight: 700;
+	height: 40px;
+	width: 100px;
+	text-overflow: none;
+}
+
+.btn-a{
+	height: 40px !important; 
+    width: 100px !important; 
+}
+
+
 /* 960 grid system container background
 ----------------------------------------------- */
 .container_12,
@@ -96,7 +116,14 @@ h2#page-heading {
 	border-bottom:1px solid #ccc;
 	color:#fff;
 }
-
+.success{
+	font-size: 18px;
+	color: green;
+}
+.error{
+	font-size: 18px;
+	color: red;
+}
 
 /* boxes
 ----------------------------------------------- */
