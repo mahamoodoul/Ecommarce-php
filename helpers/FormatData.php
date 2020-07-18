@@ -1,6 +1,6 @@
 <?php
 
-class Format
+class FormatData
 {
     public function formatDate($date)
     {
@@ -13,6 +13,8 @@ class Format
         $text = substr($text, 0, $limit);
         $text = substr($text, 0, strrpos($text, ' '));
         $text = $text . ".....";
+        // var_dump($text);
+        // die();
         return $text;
     }
 
@@ -21,6 +23,7 @@ class Format
         $data = trim($data);
         $data = stripcslashes($data);
         $data = htmlspecialchars($data);
+        
         return $data;
     }
 

@@ -2,7 +2,7 @@
 include "../lib/Session.php";
 Session::checkLogin();
 include_once '../lib/Database.php';
-include_once '../helpers/Format.php';
+include_once '../helpers/FormatData.php';
 
 ?>
 
@@ -15,7 +15,7 @@ class AdminLogin
     public function __construct()
     {
         $this->db = new Database();
-        $this->fm = new Format();
+        $this->fm = new FormatData();
     }
 
     public function adminlogin($username, $password)

@@ -1,6 +1,6 @@
 <?php
 include_once '../lib/Database.php';
-include_once '../helpers/Format.php';
+include_once '../helpers/FormatData.php';
 
 ?>
 
@@ -15,7 +15,7 @@ class Category
     public function __construct()
     {
         $this->db = new Database();
-        $this->fm = new Format();
+        $this->fm = new FormatData();
     }
 
     public function catInsert($catname)
@@ -44,6 +44,8 @@ class Category
     {
         $query = "SELECT * FROM tb_category ORDER BY catid DESC";
         $result = $this->db->select($query);
+        // var_dump($result);
+        // die();
         return $result;
     }
 
