@@ -1,6 +1,7 @@
 <?php
-include_once '../lib/Database.php';
-include_once '../helpers/FormatData.php';
+$filepath=realpath(dirname(__FILE__));
+include_once ($filepath.'/../lib/Database.php');
+include_once ($filepath.'/../helpers/FormatData.php');
 
 ?>
 
@@ -196,5 +197,11 @@ class Product
             $msg = "<span class='error'>Data did not deleted </span>";
             return $msg;
         }
+    }
+
+    public function getFeatureProduct(){
+        $query = "SELECT * FROM tbl_product WHERE type = '0' ORDER BY productid DESC LIMIT 8 ";
+        $result = $this->db->select($query);
+        return $result;
     }
 }

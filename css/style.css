@@ -603,8 +603,11 @@ p.note{
 .grid_1_of_4{
 	display: block;
 	float:left;
-	margin: 1% 0 1% 1.6%;
-	box-shadow: 0px 0px 3px rgb(150, 150, 150);
+	margin: 20px 3px;
+	/* box-shadow: 0px 0px 3px rgb(150, 150, 150); */
+	box-shadow: 0px 5px 20px rgb(150, 150, 150);
+	border-radius: 22px 22px;
+	border: 2px solid whitesmoke;
 }
 .grid_1_of_4:first-child { 
 	margin-left: 0; 
@@ -664,6 +667,37 @@ p.note{
 		padding:7px 20px;
 		font-size:0.8em;
 }
+
+ 
+.gradient-button {
+    margin: 10px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 14px;
+    padding: 10px;
+    text-align: center;
+    /* text-transform: uppercase; */
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #FFF;
+    box-shadow: 0 0 20px #eee;
+	border-radius: 10px;
+	height: 15px;
+    width: 100px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 25px;
+}
+.gradient-button:hover{
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    margin: 8px 10px 12px;
+}
+
+.gradient-button-3 {background-image: linear-gradient(to right, #4f4fd3 0%, #348AC7 51%, #7474BF 100%)}
+.gradient-button-3:hover { background-position: right center; }
+
+
 .images_1_of_4 .button a{
 	font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
 	font-size: 14px;
@@ -671,7 +705,8 @@ p.note{
 	text-transform: none;
 	color: #737370;
 	text-decoration: none!important;
-	background: url(../images/button-bg.png) repeat-x 0 0 #E8E8E8;
+	/* background: url(../images/button-bg.png) repeat-x 0 0 #E8E8E8; */
+	
 	display: inline-block;
 	border-left: 1px solid #D4D4D4!important;
 	border-right: 1px solid #ADADAD!important;
