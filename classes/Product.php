@@ -204,4 +204,24 @@ class Product
         $result = $this->db->select($query);
         return $result;
     }
+
+
+    public function getNewProduct(){
+        $query = "SELECT * FROM tbl_product ORDER BY productid DESC LIMIT 4 ";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+    public function getSingleProducts($id){
+
+        $query="SELECT product.*,category.catname,brand.name
+                FROM tbl_product as product,tb_category as category, tbl_brand as brand
+                WHERE product.catid=category.catid AND
+                      product.brandid=brand.brandid AND
+                      product.productid='$id'
+                ";
+        $result=$this->db->select($query);
+        return $result;
+
+    }
 }

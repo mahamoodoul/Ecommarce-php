@@ -1,11 +1,11 @@
 <?php
-
-$filepath=realpath(dirname(__FILE__));
-include_once ($filepath.'/../lib/Database.php');
-include_once ($filepath.'/../helpers/FormatData.php');
-
 include "lib/Session.php";
 Session::init();
+$filepath = realpath(dirname(__FILE__));
+include_once($filepath . '/../lib/Database.php');
+include_once($filepath . '/../helpers/FormatData.php');
+
+
 
 ?>
 <?php
@@ -14,10 +14,10 @@ spl_autoload_register(function ($class) {
 	include_once "classes/" . $class . ".php";
 });
 
- $db =new Database();
- $fm =new FormatData();
- $pd =new Product();
- $ct =new Cart(); 
+$db = new Database();
+$fm = new FormatData();
+$pd = new Product();
+$ct = new Cart();
 
 
 
@@ -48,6 +48,17 @@ header("Cache-Control: max-age=2592000");
 	<script type="text/javascript" src="js/nav-hover.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Monda' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
+	<!-- imagezoom -->
+
+
+	<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+
+	<link rel="stylesheet" href="dist/css/image-zoom.css" />
+
+
+	<!-- end image zoom -->
+
+
 	<script type="text/javascript">
 		$(document).ready(function($) {
 			$('#dc_mega-menu-orange').dcMegaMenu({
