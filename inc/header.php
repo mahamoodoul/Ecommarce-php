@@ -22,7 +22,11 @@ $ct = new Cart();
 
 
 ?>
+<?php
+$sId = session_id();
+$cartInHeader = $ct->cartHintinHeadder($sId);
 
+?>
 
 <?php
 header("Cache-Control: no-cache, must-revalidate");
@@ -84,9 +88,22 @@ header("Cache-Control: max-age=2592000");
 				</div>
 				<div class="shopping_cart">
 					<div class="cart">
-						<a href="#" title="View my shopping cart" rel="nofollow">
-							<span class="cart_title">Cart</span>
-							<span class="no_product">(empty)</span>
+						<a href="cart.php" title="View my shopping cart" rel="nofollow">
+							<?php if (isset($cartInHeader)) {
+								// var_dump($cartInHeader);
+								// die();
+								$count = $cartInHeader['count'];
+								$total = $cartInHeader['grandTotal'];
+								$totalQuantity=$cartInHeader['totalQuantity'];
+								$grandTotal = ($total + ($total * (10 / 100)));
+							?>
+
+								<!-- <span class="cart_title">Cart</span> -->
+								<span class="has_product"> P:<?php echo $count;?>|Q:<?php echo $totalQuantity; ?>($<?php echo $grandTotal; ?>)</span>
+							<?php } else { ?>
+								<span class="cart_title">Cart</span>
+								<span class="no_product">(Empty)</span>
+							<?php } ?>
 						</a>
 					</div>
 				</div>
