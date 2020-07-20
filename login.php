@@ -1,14 +1,42 @@
 <?php include("inc/header.php") ?>
 
 
+
+<style>
+	.inupt-shape {
+		font-size: 12px;
+		color: #b3b1b1;
+		padding: 8px;
+		outline: none;
+		margin: 5px 0;
+		width: 340px;
+	}
+
+	.number-size {
+		width: 344px !important;
+		border: 1px solid #767676 !important;
+		height: 17px !important;
+	}
+</style>
+
+
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
+	$registrationSuccess = $customer->customerREgistration($_POST);
+}
+
+?>
+
+
 <div class="main">
 	<div class="content">
 		<div class="login_panel">
 			<h3>Existing Customers</h3>
 			<p>Sign in with the form below.</p>
 			<form action="hello" method="get" id="member">
-				<input name="Domain" type="text" value="Username" class="field" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}">
-				<input name="Domain" type="password" value="Password" class="field" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+				<input style="width: 92% !important;" class="inupt-shape" name="email" type="email" placeholder="Email">
+				<input name="password" type="password" placeholder="Password">
 			</form>
 			<p class="note">If you forgot your passoword just enter your email and click <a href="#">here</a></p>
 			<div class="buttons">
@@ -16,33 +44,42 @@
 			</div>
 		</div>
 		<div class="register_account">
+
+
+			<?php
+
+			if (isset($registrationSuccess)) {
+				echo $registrationSuccess;
+			}
+
+			?>
 			<h3>Register New Account</h3>
-			<form>
+			<form action="" method="POST">
 				<table>
 					<tbody>
 						<tr>
 							<td>
 								<div>
-									<input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
+									<input type="text" name="name" placeholder="Name">
 								</div>
 
 								<div>
-									<input type="text" value="City" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'City';}">
+									<input type="text" name="city" placeholder="City">
 								</div>
 
 								<div>
-									<input type="text" value="Zip-Code" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Zip-Code';}">
+									<input type="text" name="code" placeholder="Zip-Code">
 								</div>
 								<div>
-									<input type="text" value="E-Mail" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-Mail';}">
+									<input class="inupt-shape" type="email" name="email" placeholder="Email">
 								</div>
 							</td>
 							<td>
 								<div>
-									<input type="text" value="Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Address';}">
+									<input type="text" name="address" placeholder="Addresee">
 								</div>
 								<div>
-									<select id="country" name="country" onchange="change_country(this.value)" class="frm-field required">
+									<select id="country" name="country">
 										<option value="null">Select a Country</option>
 										<option value="AF">Afghanistan</option>
 										<option value="AL">Albania</option>
@@ -61,18 +98,18 @@
 								</div>
 
 								<div>
-									<input type="text" value="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}">
+									<input class="inupt-shape number-size" type="number" name="phone" placeholder="Phone Number">
 								</div>
 
 								<div>
-									<input type="text" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+									<input style="margin-top:6px;" class="inupt-shape " type="password" name="password" placeholder="Password">
 								</div>
 							</td>
 						</tr>
 					</tbody>
 				</table>
 				<div class="search">
-					<div><button class="grey">Create Account</button></div>
+					<div><button name="register" class="grey">Create Account</button></div>
 				</div>
 				<p class="terms">By clicking 'Create Account' you agree to the <a href="#">Terms &amp; Conditions</a>.</p>
 				<div class="clear"></div>

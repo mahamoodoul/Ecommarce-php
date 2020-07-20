@@ -1,49 +1,92 @@
 <div class="header_bottom">
 	<div class="header_bottom_left">
 		<div class="section group">
-			<div class="listview_1_of_2 images_1_of_2">
-				<div class="listimg listimg_2_of_1">
-					<a href="details.php"> <img src="images/pic4.png" alt="" /></a>
-				</div>
-				<div class="text list_2_of_1">
-					<h2>Iphone</h2>
-					<p>Lorem ipsum dolor sit amet sed do eiusmod.</p>
-					<div class="button"><span><a href="details.php">Add to cart</a></span></div>
-				</div>
-			</div>
-			<div class="listview_1_of_2 images_1_of_2">
-				<div class="listimg listimg_2_of_1">
-					<a href="details.php"><img src="images/pic3.png" alt="" /></a>
-				</div>
-				<div class="text list_2_of_1">
-					<h2>Samsung</h2>
-					<p>Lorem ipsum dolor sit amet, sed do eiusmod.</p>
-					<div class="button"><span><a href="details.php">Add to cart</a></span></div>
-				</div>
-			</div>
+
+
+			<?php
+			$iphone = $pd->latestFromIphone();
+			if ($iphone) {
+				while ($result = $iphone->fetch_assoc()) {
+
+			?>
+					<div class="listview_1_of_2 images_1_of_2">
+						<div class="listimg listimg_2_of_1">
+							<a href="details.php?productId=<?php echo $result['productid']; ?>"> <img src="admin/<?php echo $result['image']; ?>" alt="" /></a>
+						</div>
+						<div class="text list_2_of_1">
+							<h2>Iphone</h2>
+							<p><?php echo $result['productname']; ?></p>
+							<div class="button"><span><a href="details.php?productId=<?php echo $result['productid']; ?>">Add to cart</a></span></div>
+						</div>
+					</div>
+
+			<?php }
+			} ?>
+
+			<?php
+			$onePLus = $pd->latestFromOnePlus();
+			if ($onePLus) {
+				while ($result = $onePLus->fetch_assoc()) {
+
+			?>
+					<div class="listview_1_of_2 images_1_of_2">
+						<div class="listimg listimg_2_of_1">
+							<a href="details.php?productId=<?php echo $result['productid']; ?>"> <img src="admin/<?php echo $result['image']; ?>" alt="" /></a>
+						</div>
+						<div class="text list_2_of_1">
+							<h2>One Plus</h2>
+							<p><?php echo $result['productname']; ?></p>
+							<div class="button"><span><a href="details.php?productId=<?php echo $result['productid']; ?>">Add to cart</a></span></div>
+						</div>
+					</div>
+
+			<?php }
+			} ?>
 		</div>
+
 		<div class="section group">
-			<div class="listview_1_of_2 images_1_of_2">
-				<div class="listimg listimg_2_of_1">
-					<a href="details.php"> <img src="images/pic3.jpg" alt="" /></a>
-				</div>
-				<div class="text list_2_of_1">
-					<h2>Acer</h2>
-					<p>Lorem ipsum dolor sit amet, sed do eiusmod.</p>
-					<div class="button"><span><a href="details.php">Add to cart</a></span></div>
-				</div>
-			</div>
-			<div class="listview_1_of_2 images_1_of_2">
-				<div class="listimg listimg_2_of_1">
-					<a href="details.php"><img src="images/pic1.png" alt="" /></a>
-				</div>
-				<div class="text list_2_of_1">
-					<h2>Canon</h2>
-					<p>Lorem ipsum dolor sit amet, sed do eiusmod.</p>
-					<div class="button"><span><a href="details.php">Add to cart</a></span></div>
-				</div>
-			</div>
+
+			<?php
+			$samsung = $pd->latestFromSamsung();
+			if ($samsung) {
+				while ($result = $samsung->fetch_assoc()) {
+
+			?>
+					<div class="listview_1_of_2 images_1_of_2">
+						<div class="listimg listimg_2_of_1">
+							<a href="details.php?productId=<?php echo $result['productid']; ?>"> <img src="admin/<?php echo $result['image']; ?>" alt="" /></a>
+						</div>
+						<div class="text list_2_of_1">
+							<h2>Samsungs</h2>
+							<p><?php echo $result['productname']; ?></p>
+							<div class="button"><span><a href="details.php?productId=<?php echo $result['productid']; ?>">Add to cart</a></span></div>
+						</div>
+					</div>
+
+			<?php }
+			} ?>
+
+			<?php
+			$lg = $pd->latestFromLg();
+			if ($lg) {
+				while ($result = $lg->fetch_assoc()) {
+
+			?>
+					<div class="listview_1_of_2 images_1_of_2">
+						<div class="listimg listimg_2_of_1">
+							<a href="details.php?productId=<?php echo $result['productid']; ?>"> <img src="admin/<?php echo $result['image']; ?>" alt="" /></a>
+						</div>
+						<div class="text list_2_of_1">
+							<h2>Lg</h2>
+							<p><?php echo $result['productname']; ?></p>
+							<div class="button"><span><a href="details.php?productId=<?php echo $result['productid']; ?>">Add to cart</a></span></div>
+						</div>
+					</div>
+
+			<?php }
+			} ?>
 		</div>
+
 		<div class="clear"></div>
 	</div>
 	<div class="header_bottom_right_images">

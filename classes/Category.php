@@ -44,8 +44,6 @@ class Category
     {
         $query = "SELECT * FROM tb_category ORDER BY catid DESC";
         $result = $this->db->select($query);
-        // var_dump($result);
-        // die();
         return $result;
     }
 
@@ -93,6 +91,14 @@ class Category
             return $msg;
         }
     }
-}
 
+    public function getCategoryProductsById($id){
+        $query = "SELECT * FROM tbl_product WHERE catid='$id' ORDER BY catid DESC limit 8";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+
+
+}
 ?>

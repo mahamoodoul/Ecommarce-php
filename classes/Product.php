@@ -1,7 +1,7 @@
 <?php
-$filepath=realpath(dirname(__FILE__));
-include_once ($filepath.'/../lib/Database.php');
-include_once ($filepath.'/../helpers/FormatData.php');
+$filepath = realpath(dirname(__FILE__));
+include_once($filepath . '/../lib/Database.php');
+include_once($filepath . '/../helpers/FormatData.php');
 
 ?>
 
@@ -199,29 +199,58 @@ class Product
         }
     }
 
-    public function getFeatureProduct(){
+    public function getFeatureProduct()
+    {
         $query = "SELECT * FROM tbl_product WHERE type = '0' ORDER BY productid DESC LIMIT 8 ";
         $result = $this->db->select($query);
         return $result;
     }
 
 
-    public function getNewProduct(){
+    public function getNewProduct()
+    {
         $query = "SELECT * FROM tbl_product ORDER BY productid DESC LIMIT 4 ";
         $result = $this->db->select($query);
         return $result;
     }
 
-    public function getSingleProducts($id){
+    public function getSingleProducts($id)
+    {
 
-        $query="SELECT product.*,category.catname,brand.name
+        $query = "SELECT product.*,category.catname,brand.name
                 FROM tbl_product as product,tb_category as category, tbl_brand as brand
                 WHERE product.catid=category.catid AND
                       product.brandid=brand.brandid AND
                       product.productid='$id'
                 ";
-        $result=$this->db->select($query);
+        $result = $this->db->select($query);
         return $result;
+    }
 
+
+    
+    public function latestFromIphone()
+    {
+        $query = "SELECT * FROM tbl_product WHERE brandid= '12'  ORDER BY productid DESC LIMIT 1 ";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function latestFromOnePlus()
+    {
+        $query = "SELECT * FROM tbl_product WHERE brandid= '1'  ORDER BY productid DESC LIMIT 1 ";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function latestFromSamsung()
+    {
+        $query = "SELECT * FROM tbl_product WHERE brandid= '2'  ORDER BY productid DESC LIMIT 1 ";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function latestFromLg()
+    {
+        $query = "SELECT * FROM tbl_product WHERE brandid= '6'  ORDER BY productid DESC LIMIT 1 ";
+        $result = $this->db->select($query);
+        return $result;
     }
 }

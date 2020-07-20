@@ -18,6 +18,8 @@ $db = new Database();
 $fm = new FormatData();
 $pd = new Product();
 $ct = new Cart();
+$cat = new Category();
+$customer = new Customer();
 
 
 
@@ -94,12 +96,12 @@ header("Cache-Control: max-age=2592000");
 								// die();
 								$count = $cartInHeader['count'];
 								$total = $cartInHeader['grandTotal'];
-								$totalQuantity=$cartInHeader['totalQuantity'];
+								$totalQuantity = $cartInHeader['totalQuantity'];
 								$grandTotal = ($total + ($total * (10 / 100)));
 							?>
 
 								<!-- <span class="cart_title">Cart</span> -->
-								<span class="has_product"> P:<?php echo $count;?>|Q:<?php echo $totalQuantity; ?>($<?php echo $grandTotal; ?>)</span>
+								<span class="has_product"> P:<?php echo $count; ?>|Q:<?php echo $totalQuantity; ?>($<?php echo $grandTotal; ?>)</span>
 							<?php } else { ?>
 								<span class="cart_title">Cart</span>
 								<span class="no_product">(Empty)</span>
