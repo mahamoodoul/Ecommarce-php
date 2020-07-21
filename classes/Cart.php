@@ -136,4 +136,20 @@ class Cart
             return $cartData;
         }
     }
+
+
+    public function delCustomer()
+    {
+        $sId = session_id();
+        $query = "delete from tbl_cart where sId ='$sId' ";
+        $this->db->delete($query);
+    }
+
+    public function checkCart(){
+        $sId = session_id();
+        $query = "select * from tbl_cart where sId ='$sId' ";
+        $data= $this->db->select($query);
+        return $data;
+
+    }
 }

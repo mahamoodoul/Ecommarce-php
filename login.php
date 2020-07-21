@@ -1,6 +1,13 @@
 <?php include("inc/header.php") ?>
 
+<?php
 
+$login = Session::get("customerLogin");
+if ($login == true) {
+	header('Location:order.php');
+}
+
+?>
 
 <style>
 	.inupt-shape {
@@ -19,7 +26,12 @@
 	}
 </style>
 
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
+	$loginCustomer = $customer->customerLoigin($_POST);
+}
 
+?>
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
@@ -32,16 +44,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
 <div class="main">
 	<div class="content">
 		<div class="login_panel">
+			<?php
+			if (isset($loginCustomer)) {
+				echo $loginCustomer;
+			}
+
+			?>
 			<h3>Existing Customers</h3>
 			<p>Sign in with the form below.</p>
-			<form action="hello" method="get" id="member">
+			<form action="" method="post">
 				<input style="width: 92% !important;" class="inupt-shape" name="email" type="email" placeholder="Email">
 				<input name="password" type="password" placeholder="Password">
+				<div class="buttons">
+					<div><button class="grey" name="login">Sign In</button></div>
+				</div>
 			</form>
 			<p class="note">If you forgot your passoword just enter your email and click <a href="#">here</a></p>
-			<div class="buttons">
-				<div><button class="grey">Sign In</button></div>
-			</div>
+
 		</div>
 		<div class="register_account">
 
@@ -81,18 +100,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
 								<div>
 									<select id="country" name="country">
 										<option value="null">Select a Country</option>
-										<option value="AF">Afghanistan</option>
-										<option value="AL">Albania</option>
-										<option value="DZ">Algeria</option>
-										<option value="AR">Argentina</option>
-										<option value="AM">Armenia</option>
-										<option value="AW">Aruba</option>
-										<option value="AU">Australia</option>
-										<option value="AT">Austria</option>
-										<option value="AZ">Azerbaijan</option>
-										<option value="BS">Bahamas</option>
-										<option value="BH">Bahrain</option>
-										<option value="BD">Bangladesh</option>
+										<option value="Afghanistan">Afghanistan</option>
+										<option value="Albania">Albania</option>
+										<option value="Algeria">Algeria</option>
+										<option value="Argentina">Argentina</option>
+										<option value="Armenia">Armenia</option>
+										<option value="Aruba">Aruba</option>
+										<option value="Australia">Australia</option>
+										<option value="Austria">Austria</option>
+										<option value="Azerbaijan">Azerbaijan</option>
+										<option value="Bahamas">Bahamas</option>
+										<option value="Bahrain">Bahrain</option>
+										<option value="Bangladesh">Bangladesh</option>
 
 									</select>
 								</div>

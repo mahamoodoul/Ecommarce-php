@@ -139,7 +139,7 @@ if (!isset($_GET['id'])) {
 						<a href="index.php"> <img src="images/shop.png" alt="" /></a>
 					</div>
 					<div class="shopright">
-						<a href="login.php"> <img src="images/check.png" alt="" /></a>
+						<a href="order.php"> <img src="images/check.png" alt="" /></a>
 					</div>
 				<?php } else { ?>
 

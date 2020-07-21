@@ -91,25 +91,57 @@ header("Cache-Control: max-age=2592000");
 				<div class="shopping_cart">
 					<div class="cart">
 						<a href="cart.php" title="View my shopping cart" rel="nofollow">
-							<?php if (isset($cartInHeader)) {
-								// var_dump($cartInHeader);
-								// die();
-								$count = $cartInHeader['count'];
-								$total = $cartInHeader['grandTotal'];
-								$totalQuantity = $cartInHeader['totalQuantity'];
-								$grandTotal = ($total + ($total * (10 / 100)));
+							<?php
+							$login = Session::get("customerLogin");
+							if ($login == true) {
 							?>
+								<?php if (isset($cartInHeader)) {
+									// var_dump($cartInHeader);
+									// die();
+									$count = $cartInHeader['count'];
+									$total = $cartInHeader['grandTotal'];
+									$totalQuantity = $cartInHeader['totalQuantity'];
+									$grandTotal = ($total + ($total * (10 / 100)));
+								?>
 
-								<!-- <span class="cart_title">Cart</span> -->
-								<span class="has_product"> P:<?php echo $count; ?>|Q:<?php echo $totalQuantity; ?>($<?php echo $grandTotal; ?>)</span>
-							<?php } else { ?>
+									<!-- <span class="cart_title">Cart</span> -->
+									<span class="has_product"> P:<?php echo $count; ?>|Q:<?php echo $totalQuantity; ?>($<?php echo $grandTotal; ?>)</span>
+								<?php
+								} else { ?>
+									<span class="cart_title">Cart</span>
+									<span class="no_product">(Empty)</span>
+								<?php }
+							} else { ?>
+
 								<span class="cart_title">Cart</span>
-								<span class="no_product">(Empty)</span>
+								<span class="no_product">(Null)</span>
+
 							<?php } ?>
 						</a>
 					</div>
 				</div>
-				<div class="login"><a href="login.php">Login</a></div>
+
+				<?php
+				if (isset($_GET['cId'])) {
+
+					$delData = $ct->delCustomer();
+					Session::destroy();
+				}
+				?>
+
+
+
+
+				<?php
+				$login = Session::get("customerLogin");
+				if ($login == true) { ?>
+					<div class="login"><a class="login-btn" href="?cId=<?php Session::get("customerID") ?>">Logout</a></div>
+				<?php } else {
+				?>
+					<div class="login"><a class="login-btn" href="login.php">Login</a></div>
+				<?php } ?>
+
+
 				<div class="clear"></div>
 			</div>
 			<div class="clear"></div>
@@ -119,7 +151,21 @@ header("Cache-Control: max-age=2592000");
 				<li><a href="index.php">Home</a></li>
 				<li><a href="products.php">Products</a> </li>
 				<li><a href="topbrands.php">Top Brands</a></li>
-				<li><a href="cart.php">Cart</a></li>
+
+				<?php
+				$cartCheck = $ct->checkCart();
+				if ($cartCheck) {
+				?>
+					<li><a href="cart.php">Cart</a></li>
+				<?php	}
+				?>
+
+				<?php
+				$loggedIn = Session::get("customerLogin");
+				if ($loggedIn == true) { ?>
+					<li><a href="profile.php">Profile</a> </li>
+				<?php	}
+				?>
 				<li><a href="contact.php">Contact</a> </li>
 				<div class="clear"></div>
 			</ul>
