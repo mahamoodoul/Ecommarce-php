@@ -18,12 +18,14 @@
     }
 
     .update-btn {
-        margin-left: 304px;
+        margin-left: 60px;
         width: 100px;
         height: 30px;
         border-radius: 15px !important;
         border: 1px solid darkcyan;
     }
+
+    
 </style>
 
 
@@ -106,9 +108,23 @@ if ($loggedIn == false) {
                                 <td>Email</td>
                                 <td> <input value="<?php echo $result['email']; ?>" type="text" name="email" id=""></td>
                             </tr>
-                            <tr>
+
+
+                            <tr class="margin-btn">
                                 <td></td>
-                                <td> <input class="update-btn" type="submit" name="submit" value="Update"></td>
+                                <td>
+                                    <?php
+                                    $cartCheck = $ct->checkCart();
+                                    if ($cartCheck) {
+                                    ?>
+                                        <button class="update-btn"><a href="payment.php">Back</a></button>
+
+                                    <?php } else { ?>
+                                        <button class="update-btn"><a href="profile.php">Back</a></button>
+                                    <?php } ?>
+                                    <input class="update-btn" type="submit" name="submit" value="Update"></td>
+
+
 
                             </tr>
 
@@ -118,8 +134,10 @@ if ($loggedIn == false) {
             } ?>
 
         </div>
+
         <div class="clear"></div>
     </div>
 </div>
+
 </div>
 <?php include("inc/footer.php") ?>
