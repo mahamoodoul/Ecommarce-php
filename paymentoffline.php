@@ -55,6 +55,19 @@
 </style>
 
 
+<?php
+if (isset($_GET['orderId']) && $_GET['orderId'] == 'order') {
+
+    $customerId = Session::get('customerID');
+    $insertOrder=$ct->orderProduct($customerId);
+    $deleteCart=$ct->delCustomer();
+    header("Location:success.php");
+}
+
+
+?>
+
+
 
 <?php
 $loggedIn = Session::get("customerLogin");
@@ -211,7 +224,7 @@ if ($loggedIn == false) {
     </div>
 </div>
 <div class="order-now">
-    <a href="">Order Now</a>
+    <a href="?orderId=order">Order Now</a>
 </div>
 </div>
 <?php include("inc/footer.php") ?>

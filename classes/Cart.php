@@ -145,11 +145,60 @@ class Cart
         $this->db->delete($query);
     }
 
-    public function checkCart(){
+    public function checkCart()
+    {
         $sId = session_id();
         $query = "select * from tbl_cart where sId ='$sId' ";
-        $data= $this->db->select($query);
+        $data = $this->db->select($query);
         return $data;
+    }
+    public function orderProduct($customerId)
+    {
+        $sId = session_id();
+        $query = "select * from tbl_cart where sId ='$sId' ";
+        $getProduct = $this->db->select($query);
+        //  echo '<pre>';
+        // var_dump($getProduct);
+        // die();
+        // echo '</pre>';
+        if ($getProduct) {
+            while ($result = $getProduct->fetch_assoc()) {
 
+                $productId = $result['productId'];
+                $productName = $result['productName'];
+                $quantity = $result['quantity'];
+                $price = $result['price'] * $quantity;
+                $image = $result['image'];
+
+                $query = " INSERT INTO tbl_order(cmrId,productId,productName,quantity,price,image)
+                            VALUES('$customerId','$productId','$productName','$quantity','$price','$image')";
+                $data = $this->db->insert($query);
+            }
+        }
+    }
+
+    public function getTotal($cusid)
+    {
+        $query = "select * from tbl_order where cmrId ='$cusid' and date=now()";
+        $data = $this->db->select($query);
+        // var_dump($data);
+        // die();
+        return $data;
+    }
+
+
+    public function getOrderProducts(){
+        $csid=Session::get("customerID");
+        $query = "SELECT * FROM tbl_order WHERE cmrId = '$csid' ORDER BY id DESC ";
+        $data = $this->db->select($query);
+        return $data;
+    }
+    public function showOrderDetails($csid){
+        $query = "SELECT * FROM tbl_order WHERE cmrId = '$csid' ";
+        $data = $this->db->select($query);
+        if($data){
+            return true;
+        }
+        return false;
     }
 }

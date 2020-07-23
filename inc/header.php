@@ -167,6 +167,13 @@ header("Cache-Control: max-age=2592000");
 					<li><a href="profile.php">Profile</a> </li>
 				<?php	}
 				?>
+				<?php
+				$csid = Session::get("customerID");
+				$showOrder=$ct->showOrderDetails($csid);
+				if ($showOrder == true) { ?>
+					<li><a href="orderdetails.php">Order </a> </li>
+				<?php	}
+				?>
 				<li><a href="contact.php">Contact</a> </li>
 				<div class="clear"></div>
 			</ul>
